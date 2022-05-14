@@ -33,13 +33,13 @@ func main() {
 
 	var METRICS_PATH = "/metrics"
 	var PORT = ":8080"
-	fmt.Printf("Running metrics exporter on localhost%s%s\n", PORT, METRICS_PATH)
+	fmt.Printf("Running metrics exporter on localhost:%s%s\n", PORT, METRICS_PATH)
 	http.HandleFunc("/", Default)
 	http.HandleFunc("/handle", handle)
 	http.HandleFunc("/h1", h1)
 	http.HandleFunc("/h2", h2)
 	http.Handle(METRICS_PATH, promhttp.Handler())
-	http.ListenAndServe(PORT, nil)
+	http.ListenAndServe(fmt.Sprintf(":%s", PORT), nil)
 }
 
 func Default(w http.ResponseWriter, _ *http.Request) {
