@@ -2,20 +2,11 @@ package main
 
 import (
 	"fmt"
+  
 )
-
-func main() {
-	g := greeter{ 
-		greeting: "Hello",
-		name: "Jerry",
-	}
-	g.greetPointer()
-	fmt.Println(g.name)
-}
-
 type greeter struct {
-	greeting string
 	name string
+	greeting string
 }
 
 func (gr greeter) greet() {
@@ -24,5 +15,15 @@ func (gr greeter) greet() {
 
 func (g *greeter) greetPointer() {
 	fmt.Println(g.greeting, g.name)
- 	g.name = "Tom"
+}
+
+func main() {
+  g := greeter{
+    greeting: "Hello",
+		name: "Jerry",
+	}
+	g.greetPointer()
+	g.greet()
+  g.name = "Tom"
+	g.greetPointer()
 }

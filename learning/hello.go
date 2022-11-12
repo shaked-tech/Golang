@@ -7,7 +7,7 @@ import (
 
 func Public() {
     fmt.Print("This is a public function")
-    return true
+    // return true
 }
 
 func main() {
